@@ -1,0 +1,38 @@
+# .github/workflows/main.yml (or deploy.yml)
+# This workflow automates building your Vite project and deploying it to GitHub Pages.
+
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # This workflow runs when you push changes to the 'main' branch
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest # Specifies the operating system for the job
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4 # Action to check out your repository's code
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4 # Action to set up the Node.js environment
+      with:
+        node-version: '22.16.0' # IMPORTANT: Use the Node.js version you specified earlier
+
+    - name: Install dependencies
+      run: npm install # Installs project dependencies
+      working-directory: glowtype-ratata/ # IMPORTANT: Specifies that 'npm install' should run inside the 'glowtype-ratata' subfolder
+
+    - name: Build project
+      run: npm run build # Executes your Vite build command
+      working-directory: glowtype-ratata/ # IMPORTANT: Specifies that 'npm run build' should run inside the 'glowtype-ratata' subfolder
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3 # This popular action handles the deployment to GitHub Pages
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }} # GitHub's default token, automatically provided for actions
+        publish_dir: ./glowtype-ratata/dist # IMPORTANT: This is the path to your built site files, relative to the repository root
+        # If you were using a custom domain (e.g., example.com), you would uncomment and set this:
+        # cname: yourdomain.com
