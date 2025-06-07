@@ -1,0 +1,10 @@
+# netlify.toml file located at the ROOT of your repository
+
+[build]
+  base = "glowtype-ratata/" 
+  command = "npm run build"
+  publish = "dist/"
+  functions = "netlify/functions/" 
+
+[build.environment]
+  NODE_VERSION = "22.16.0"
