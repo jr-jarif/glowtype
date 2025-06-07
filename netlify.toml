@@ -1,31 +1,18 @@
 # netlify.toml file located in D:\my-ts-app\glowtype-ratata\netlify.toml
 
 [build]
-  # This 'base' tells Netlify where your package.json is, relative to your Git repo's root
-  # Since your project is in 'glowtype-ratata' folder at the repo's root,
-  # and this netlify.toml is *inside* 'glowtype-ratata',
-  # the 'base' should be set to '.' (current directory) or left blank/omitted
-  # If omitted, the default is the directory where netlify.toml resides.
-  # Let's explicitly set it for clarity and consistency.
-  base = "." 
+  # CHANGE THIS LINE: Set base to your project folder relative to the Git repo's root
+  base = "glowtype-ratata/" 
 
   # The command to run your build
   command = "npm run build"
 
-  # The directory where the final built files (index.html, JS, CSS) are located,
-  # relative to the 'base' directory. Your build output creates a 'dist' folder.
-  publish = "dist/"
+  # The directory where the final built files are located, relative to the 'base' directory.
+  publish = "dist/" 
 
   # If you're using Netlify Functions, specify their directory relative to 'base'
-  # If not, you can remove this line.
   functions = "netlify/functions/" 
 
 # Environment variables for the build process
 [build.environment]
-  # Your Gemini API Key - this is crucial!
-  # Replace 'YOUR_GEMINI_API_KEY_HERE' with your actual key.
-  # You can also set this in Netlify UI under "Site settings" -> "Environment variables"
-  # And Netlify recommends that for security.
-  # If you set it in the UI, you can remove this line from netlify.toml.
-  # Assuming you have set it in the Netlify UI as discussed previously.
-  NODE_VERSION = "22.16.0" # Make sure this matches your 'node -v' output (without 'v')
+  NODE_VERSION = "22.16.0"
