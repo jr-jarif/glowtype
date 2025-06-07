@@ -1,18 +1,13 @@
 # netlify.toml file located in D:\my-ts-app\glowtype-ratata\netlify.toml
 
 [build]
-  # CHANGE THIS LINE: Set base to your project folder relative to the Git repo's root
-  base = "glowtype-ratata/" 
+  # CHANGE THIS LINE from 'base = "."' to:
+  base = "glowtype-ratata/" # <--- THIS IS THE CRITICAL CHANGE
 
-  # The command to run your build
+  # The rest of your file should look like this:
   command = "npm run build"
-
-  # The directory where the final built files are located, relative to the 'base' directory.
-  publish = "dist/" 
-
-  # If you're using Netlify Functions, specify their directory relative to 'base'
+  publish = "dist/"
   functions = "netlify/functions/" 
 
-# Environment variables for the build process
 [build.environment]
   NODE_VERSION = "22.16.0"
